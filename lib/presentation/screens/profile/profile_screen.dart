@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:calculator2/helpers/assets.gen.dart';
+import 'package:calculator2/helpers/launcher_url.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -16,10 +15,10 @@ class ProfileScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final backgroundColor =
         Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.1);
-    final uriEmail = Uri.parse('mailto:prasetyobagus27@gmail.com');
-    final uriGithub = Uri.parse('https://github.com/mbp27');
-    final uriLinkedIn = Uri.parse(
-        'https://www.linkedin.com/in/muhamad-bagus-prasetyo-512b3517b/');
+    const urlEmail = 'mailto:prasetyobagus27@gmail.com';
+    const urlGithub = 'https://github.com/mbp27';
+    const urlLinkedIn =
+        'https://www.linkedin.com/in/muhamad-bagus-prasetyo-512b3517b/';
 
     return Scaffold(
       appBar: AppBar(title: const Text('Profile')),
@@ -125,24 +124,7 @@ class ProfileScreen extends StatelessWidget {
                         subtitle: const Text('Bekasi, West Java, Indonesia'),
                         onTap: () async {
                           try {
-                            final Uri googleMapsUrl = Uri.parse(
-                                "https://www.google.com/maps/search/${Uri.encodeFull('Kota Bekasi')}");
-                            final Uri appleMapsUrl = Uri.parse(
-                                "https://maps.apple.com/?q=${Uri.encodeFull('Kota Bekasi')}");
-
-                            await launchUrl(googleMapsUrl);
-                            if (Platform.isIOS) {
-                              final nativeAppLaunchSucceeded = await launchUrl(
-                                appleMapsUrl,
-                                mode: LaunchMode.externalNonBrowserApplication,
-                              );
-                              if (!nativeAppLaunchSucceeded) {
-                                await launchUrl(
-                                  appleMapsUrl,
-                                  mode: LaunchMode.inAppWebView,
-                                );
-                              }
-                            }
+                            await launchMapsByAddress('Kota Bekasi');
                           } catch (e) {
                             if (!mounted) return;
                             ScaffoldMessenger.of(context)
@@ -191,7 +173,7 @@ class ProfileScreen extends StatelessWidget {
                         onTap: () async {
                           try {
                             await launchUrl(
-                              uriEmail,
+                              Uri.parse(urlEmail),
                               mode: LaunchMode.externalApplication,
                             );
                           } catch (e) {
@@ -218,7 +200,7 @@ class ProfileScreen extends StatelessWidget {
                         onTap: () async {
                           try {
                             await launchUrl(
-                              uriGithub,
+                              Uri.parse(urlGithub),
                               mode: LaunchMode.externalApplication,
                             );
                           } catch (e) {
@@ -249,7 +231,10 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         onTap: () async {
                           try {
-                            await launchUrl(uriLinkedIn);
+                            await launchUrl(
+                              Uri.parse(urlLinkedIn),
+                              mode: LaunchMode.externalApplication,
+                            );
                           } catch (e) {
                             if (!mounted) return;
                             ScaffoldMessenger.of(context)
