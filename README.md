@@ -54,7 +54,7 @@ flutter run --dart-define appName='Calculator' --target=lib/main.dart
 ```
 
 ## Example APK
-Difficult to run this project? I have included `.apk` for those of you who want to try. Enjoy!
+Difficult to run this project? I have included `.apk` for those of you who want to try [here](https://github.com/mbp27/calculator2/releases). Check out the assets section and download the latest version. Enjoy!
 
 ## Flutter Gen:
 Generate every time you add or remove assets
