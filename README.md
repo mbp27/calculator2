@@ -46,7 +46,7 @@ It's recommended to do self-study about it before jumping into the project [here
 1. Clone this project.
 2. Open with your favorite tools editor.
 3. Run `pub get` on root project to generated pubspec.lock file.
-4. Run the App using [this](https://github.com/mbp27/movie#run-the-app-with-command). Enjoy!
+4. Run the App using [this](https://github.com/mbp27/calculator2#run-the-app-with-command). Enjoy!
 
 ## Run The App with Command
 ```console
